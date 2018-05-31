@@ -11,6 +11,7 @@ RUN conda install -n base conda && \
     conda install -c conda-forge elasticsearch-dsl && \
     conda install -c conda-forge neo4j-python-driver && \
     conda install -c damianavila82 rise && \
+    conda install seaborn && \
     pip install nx_altair && \
     jupyter labextension install @jupyterlab/vega3-extension && \
     jupyter labextension install jupyter-leaflet && \
