@@ -5,6 +5,7 @@ RUN conda install -n base conda && \
     conda install -c anaconda networkx && \
     conda install -c anaconda psycopg2 && \
     conda install -c conda-forge altair && \
+    conda install -c conda-forge geoplot && \
     conda install -c conda-forge ipyleaflet && \
     conda install -c conda-forge ipython-sql && \
     conda install -c conda-forge elasticsearch  && \
