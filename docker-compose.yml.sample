@@ -1,0 +1,72 @@
+version: '3'
+
+#
+# Jupyter/Neo4J/Elasticsearch containers
+#
+
+services:
+  jupyter:
+    image: ties/jupyter-vega-datascience-workbook
+    networks:
+      jupyter:
+        ipv4_address: 10.241.0.2
+    # ports:
+    #   - "127.0.0.1:8888:8888"
+    volumes:
+      - "./:/home/jovyan/work/:z"
+    command: "start.sh jupyter lab"
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    environment:
+      - cluster.name=jupyter
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      # These settings (magically) toggle development mode in the docker image - otherwise it needs a sysctl to work with docker-machine
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    # ports:
+    #   - "127.0.0.1:9200:9200"
+    networks:
+      jupyter:
+        ipv4_address: 10.241.0.3
+  neo4j:
+    image: neo4j:3.4
+    # ports:
+    #   - "127.0.0.1:7474:7474"
+    networks:
+      jupyter:
+        ipv4_address: 10.241.0.4
+    environment:
+      - NEO4J_dbms_memory_heap_maxSize=4096m
+      - NEO4J_AUTH=neo4j/password
+
+
+volumes:
+  esdata1:
+    driver: local
+
+
+networks:
+  jupyter:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.241.0.0/16
+
