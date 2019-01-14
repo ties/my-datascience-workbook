@@ -13,6 +13,7 @@ RUN conda install -n base conda && \
     conda install -c conda-forge elasticsearch-dsl && \
     conda install -c conda-forge neo4j-python-driver && \
     conda install -c damianavila82 rise && \
+    conda install -c conda-forge feather-format && \
     conda install seaborn && \
     conda install rpy2 && \
     pip install nx_altair && \
