@@ -16,7 +16,7 @@ RUN conda install -n base conda && \
     conda install -c conda-forge feather-format && \
     conda install seaborn && \
     conda install rpy2 && \
-    conda install simplegeneric && \
+    conda install -c anaconda simplegeneric && \
     pip install nx_altair && \
     jupyter labextension install @jupyterlab/vega3-extension && \
     jupyter labextension install jupyter-leaflet && \
