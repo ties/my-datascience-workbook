@@ -19,6 +19,7 @@ RUN conda install -n base conda && \
     conda install rpy2 && \
     conda install -c anaconda simplegeneric && \
     pip install nx_altair && \
+    pip install z3-solver && \
     jupyter labextension install @jupyterlab/vega3-extension && \
     jupyter labextension install jupyter-leaflet && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
