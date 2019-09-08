@@ -2,25 +2,14 @@ FROM jupyter/datascience-notebook
 
 # Update conda first to fix IsADirectoryError
 RUN conda install -n base conda && \
-    conda install -c anaconda networkx && \
-    conda install -c anaconda nltk && \
-    conda install -c anaconda pytables && \
-    conda install -c anaconda psycopg2 && \
-    conda install -c conda-forge altair && \
-    conda install -c conda-forge geoplot && \
-    conda install -c conda-forge proj4 && \
-    conda install -c conda-forge ipyleaflet && \
-    conda install -c conda-forge geojson && \
-    conda install -c conda-forge ipython-sql && \
-    conda install -c conda-forge elasticsearch  && \
-    conda install -c conda-forge elasticsearch-dsl && \
-    conda install -c conda-forge neo4j-python-driver && \
+    conda install seaborn rpy2 geopandas && \
+    conda install -c anaconda \
+        networkx nltk pytables psycopg2 simplegeneric && \
+    conda install -c conda-forge \
+        altair geoplot proj4 ipyleaflet geojson \
+        ipython-sql elasticsearch elasticsearch-dsl \
+        neo4j-python-driver feather-format && \
     conda install -c damianavila82 rise && \
-    conda install -c conda-forge feather-format && \
-    conda install seaborn && \
-    conda install rpy2 && \
-    conda install geopandas && \
-    conda install -c anaconda simplegeneric && \
     pip install nx_altair && \
     pip install z3-solver && \
     jupyter labextension install @jupyterlab/vega3-extension && \
