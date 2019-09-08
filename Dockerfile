@@ -18,6 +18,7 @@ RUN conda install -n base conda && \
     conda install -c conda-forge feather-format && \
     conda install seaborn && \
     conda install rpy2 && \
+    conda install geopandas && \
     conda install -c anaconda simplegeneric && \
     pip install nx_altair && \
     pip install z3-solver && \
