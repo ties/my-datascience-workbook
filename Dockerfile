@@ -13,6 +13,7 @@ RUN conda install -n base conda && \
     pip install nx_altair && \
     pip install z3-solver && \
     pip install geovoronoi && \
+    pip install sqlalchemy geoalchemy2 && \
     jupyter labextension install @jupyterlab/vega3-extension && \
     jupyter labextension install jupyter-leaflet && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
